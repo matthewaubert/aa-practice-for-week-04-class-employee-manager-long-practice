@@ -11,8 +11,17 @@ class Employee {
 
 
 /****************************** TESTS ******************************/
-const leo = new Employee('Leonardo', 90000, 'Ninja');
-console.log(leo)
+// const leo = new Employee('Leonardo', 90000, 'Ninja');
+// console.log(leo);
+
+/* Should log:
+Employee {
+    name: 'Leonardo',
+    salary: 90000,
+    title: 'Ninja',
+    manager: null
+}
+*/
 
 
 /****************************** EXPORT ******************************/
