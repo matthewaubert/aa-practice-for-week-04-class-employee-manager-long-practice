@@ -11,6 +11,25 @@ class Manager extends Employee {
   addEmployee(employee) {
     this.employees.push(employee); // add Employee instance to Manager instance's employees array
   }
+
+  // instance method "calculateBonus"
+  calculateBonus(multiplier) {
+    // bonus = (manager's salary + total salary of all employees under them) * multiplier
+    return (this.salary + this._totalSubSalary()) * multiplier;
+  }
+
+  // helper function "_totalSubSalary"
+  _totalSubSalary() {
+    let sum = 0; // set sum to 0
+    this.employees.forEach(employee => { // for each employee
+      sum += employee.salary; // add salary to sum
+      if (employee instanceof Manager) { // if employee is an instance of Manager
+        sum += employee._totalSubSalary(); // add recursive call to "_totalSubSalary()" to sum
+      }
+    });
+
+    return sum;
+  }
 }
 
 
@@ -80,6 +99,17 @@ After:  Manager {
   ]
 }
 */
+
+
+const splinter = new Manager('Splinter', 100000, 'Sensei');
+const leo = new Manager('Leonardo', 90000, 'Ninja', splinter);
+const raph = new Manager('Raphael', 90000, 'Ninja', leo);
+const mikey = new Employee('Michelangelo', 85000, 'Grasshopper', raph);
+const donnie = new Employee('Donatello', 85000, 'Grasshopper', raph);
+
+console.log(splinter.calculateBonus(0.05)); // => 22500
+console.log(leo.calculateBonus(0.05)); // => 17500
+console.log(raph.calculateBonus(0.05)); // => 13000
 
 
 /****************************** EXPORT ******************************/
