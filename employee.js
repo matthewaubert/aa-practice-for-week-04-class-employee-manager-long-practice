@@ -13,6 +13,11 @@ class Employee {
       this.manager = null;
     }
   }
+
+  calculateBonus(multiplier) {
+    // bonus = (employee salary) * multiplier
+    return this.salary * multiplier;
+  }
 }
 
 
@@ -28,6 +33,13 @@ Employee {
     manager: null
 }
 */
+
+
+const raph = new Employee('Raphael', 90000, 'Ninja');
+const donny = new Employee('Donatello', 85000, 'Grasshopper');
+
+console.log(raph.calculateBonus(0.25)); // => 22500
+console.log(donny.calculateBonus(0.15)); // => 12750
 
 
 /****************************** EXPORT ******************************/
