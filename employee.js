@@ -4,8 +4,14 @@ class Employee {
     this.name = name; // name property
     this.salary = salary; // salary property
     this.title = title; // title property
+
     // if manager arg is passed in, set manager property to manager; else, set to null
-    manager ? this.manager = manager : this.manager = null;
+    if (manager) {
+      this.manager = manager;
+      manager.addEmployee(this); // dynamically add employee to manager's employees array
+    } else {
+      this.manager = null;
+    }
   }
 }
 
